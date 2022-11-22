@@ -74,19 +74,43 @@ def is_board_filled(board):
                 return False
     return True
 
-#créer une variable startGame et lui associer le retour de l'exécution de la fonction input pour demander de jouer ou non
-startGame = input("Voulez-vous jouer ? oui ou non : \n")
-#si starGame est à oui
+menu = input("Bienvenue dans le célèbre jeu du Morpion ! Affrontez-vous en 1vs1 ou confrontez-vous face à notre bot à vos risques et périls :) \nVoulez-vous un rappel des règles ? oui ou non : \n")
+if menu == "oui":
+    print("Le jeu du Morpion se joue sur un tableau de 3 par 3. Le but du jeu est d'aligner avant son adversaire 3 symboles identiques (les X ou les O) horizontalement, verticalement ou en diagonale.")
+    continuer = True
+elif menu == "non":
+    continuer = True
+    game = input("Voulez-vous jouer ? oui ou non : \n")
+    if game == "oui":
+        game = True
+    elif game == "non":
+        game == False
+        print("Tant pis, à bientôt !")
+
+    while game == True:
+        gameMode = input("Choissiez un mode de jeu : 1vs1 = 1 / 1vsBot = 2 \n")
+        if gameMode == 1:
+            duoMode = True
+        elif gameMode == 2:
+            soloMode = True
+        
+        while duoMode == True:
+            continuer = True
+            playerOne = input("Joueur X choisissez votre pseudo : \n")
+            playerTwo = input("Joueur O choisissez votre pseudo : \n")
+
+
+
+
+
+
 if startGame == "oui":
-    #alors le jeu se lance
     continuer = True
     playerOne = input("Joueur X choisissez votre pseudo : \n")
     playerTwo = input("Joueur O choisissez votre pseudo : \n")
-#sinon le jeu s'arrête
 elif startGame == "non":
     print("\nTant pis, à une prochaine ! \n")
     continuer = False
-#sinon redemander la question (2 chances)
 else:
     startGame = input("Voulez-vous jouer ? oui ou non : \n")
     if startGame == "oui":
@@ -105,6 +129,9 @@ else:
         elif startGame == "non":
             print("\nTant pis, à une prochaine ! \n")
             continuer = False
+
+
+
 
 #tant que la variable continuer est égale à vrai alors le jeu se lance
 while continuer == True :
