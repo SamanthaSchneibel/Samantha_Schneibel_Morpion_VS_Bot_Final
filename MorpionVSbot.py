@@ -74,139 +74,105 @@ def is_board_filled(board):
                 return False
     return True
 
-menu = input("Bienvenue dans le célèbre jeu du Morpion ! Affrontez-vous en 1vs1 ou confrontez-vous face à notre bot à vos risques et périls :) \nVoulez-vous un rappel des règles ? oui ou non : \n")
+menu = input("Bienvenue dans le célèbre jeu du Morpion ! Affrontez-vous en 1vs1 ou confrontez-vous à notre bot à vos risques et périls :) \nVoulez-vous un rappel des règles ? oui ou non : \n")
 if menu == "oui":
     print("Le jeu du Morpion se joue sur un tableau de 3 par 3. Le but du jeu est d'aligner avant son adversaire 3 symboles identiques (les X ou les O) horizontalement, verticalement ou en diagonale.")
-    continuer = True
 elif menu == "non":
-    continuer = True
-    game = input("Voulez-vous jouer ? oui ou non : \n")
-    if game == "oui":
-        game = True
-    elif game == "non":
-        game == False
-        print("Tant pis, à bientôt !")
-
-    while game == True:
-        gameMode = input("Choissiez un mode de jeu : 1vs1 = 1 / 1vsBot = 2 \n")
-        if gameMode == 1:
-            duoMode = True
-        elif gameMode == 2:
-            soloMode = True
-        
-        while duoMode == True:
-            continuer = True
-            playerOne = input("Joueur X choisissez votre pseudo : \n")
-            playerTwo = input("Joueur O choisissez votre pseudo : \n")
-
-
-
-
-
-
-if startGame == "oui":
-    continuer = True
-    playerOne = input("Joueur X choisissez votre pseudo : \n")
-    playerTwo = input("Joueur O choisissez votre pseudo : \n")
-elif startGame == "non":
-    print("\nTant pis, à une prochaine ! \n")
-    continuer = False
+    print()
 else:
-    startGame = input("Voulez-vous jouer ? oui ou non : \n")
-    if startGame == "oui":
-        continuer = True
+    print("Error, entrez (oui) ou (non) \n")
+    menu = input("Bienvenue dans le célèbre jeu du Morpion ! Affrontez-vous en 1vs1 ou confrontez-vous à notre bot à vos risques et périls :) \nVoulez-vous un rappel des règles ? oui ou non : \n")
+    
+game = input("Voulez-vous jouer ? oui ou non : \n")
+if game == "oui":
+    game = True
+elif game == "non":
+    game == False
+    print("Tant pis, à bientôt !")
+else:
+    print("Erreur, entrez (oui) ou (non) \n")
+    game = input("Voulez-vous jouer ? oui ou non : \n")
+
+while game == True:
+    gameMode = int(input("Choissiez un mode de jeu : 1vs1 = 1 / 1vsBot = 2 \n"))
+    if gameMode == 1:
+        duoMode = True
+    elif gameMode == 2:
+        soloMode = True
+    else:
+        print("Erreur, entrez (1) ou (2) \n")
+        gameMode = int(input("Choissiez un mode de jeu : 1vs1 = 1 / 1vsBot = 2 \n"))
+        
+    while duoMode == True:
+        soloMode = False
         playerOne = input("Joueur X choisissez votre pseudo : \n")
         playerTwo = input("Joueur O choisissez votre pseudo : \n")
-    elif startGame == "non":
-        print("\nTant pis, à une prochaine ! \n")
-        continuer = False
-    else:
-        startGame = input("Voulez-vous jouer ? oui ou non : \n")
-        if startGame == "oui":
-            continuer = True
-            playerOne = input("Joueur X choisissez votre pseudo : \n")
-            playerTwo = input("Joueur O choisissez votre pseudo : \n")
-        elif startGame == "non":
-            print("\nTant pis, à une prochaine ! \n")
-            continuer = False
 
-
-
-
-#tant que la variable continuer est égale à vrai alors le jeu se lance
-while continuer == True :
+        playerOneShoot = "X"
+        playerTwoShoot = "O"
+        playerStart = randint(1, 2)
     
-    playerOneShoot = "X"
-    playerTwoShoot = "O"
-    playerStart = randint(1, 2)
-    
-    if playerStart == 1:
-        playerTurn = playerOne
-        playerShoot = playerOneShoot
-    else:
-        playerTurn = playerTwo
-        playerShoot = playerTwoShoot
-    
-    correctShoot = False
-    playerWin = False 
-    
-    showTable(tableGame)
-    while playerWin == False:
-        while correctShoot == False:
-            print("Au Tour de " + playerTurn + "\n")
-            choiceX = int(input("Choisissez la ligne à modifier (ligne 1 = 0 / ligne 2 = 1 / ligne 3 = 2) : \n"))
-            choiceY = int(input("Choisissez la colonne à modifier (colonne 1 = 0 / colonne 2 = 1 / colonne 3 = 2) : \n"))
-            if caseFilled(tableGame, choiceX, choiceY) != True:
-                tableGame[choiceX][choiceY] = playerShoot
-                correctShoot = True 
-        showTable(tableGame)
-
-        if is_player_win(tableGame, playerShoot):
-            print("Le joueur " + playerTurn +  " à gagné la partie ! :) ")
-            break
-        
-        if is_board_filled(tableGame):
-            print("Egalité ! :/")
-            break
-
-        if playerShoot == playerOneShoot:
-            playerShoot = playerTwoShoot
-            playerTurn = playerTwo
-        else : 
-            playerShoot = playerOneShoot
+        if playerStart == 1:
             playerTurn = playerOne
-
-        correctShoot = False
+            playerShoot = playerOneShoot
+        else:
+            playerTurn = playerTwo
+            playerShoot = playerTwoShoot
     
-    #créer une variable otherGame et lui associer le retour de l'exécution de la fonction input qui demande si les joueurs veulent refaire une partie
+        correctShoot = False
+        playerWin = False 
+    
+        showTable(tableGame)
+        while playerWin == False:
+            while correctShoot == False:
+                print("Au Tour de " + playerTurn + "\n")
+                choiceX = int(input("Choisissez la ligne à modifier (ligne 1 = 0 / ligne 2 = 1 / ligne 3 = 2) : \n"))
+                choiceY = int(input("Choisissez la colonne à modifier (colonne 1 = 0 / colonne 2 = 1 / colonne 3 = 2) : \n"))
+                if caseFilled(tableGame, choiceX, choiceY) != True:
+                    tableGame[choiceX][choiceY] = playerShoot
+                    correctShoot = True 
+            showTable(tableGame)
+
+            if is_player_win(tableGame, playerShoot):
+                print("Le joueur " + playerTurn +  " à gagné la partie ! :) ")
+                duoMode = False
+                game = False
+                break
+        
+            if is_board_filled(tableGame):
+                print("Egalité ! :/")
+                duoMode = False
+                game = False
+                break
+
+            if playerShoot == playerOneShoot:
+                playerShoot = playerTwoShoot
+                playerTurn = playerTwo
+            else: 
+                playerShoot = playerOneShoot
+                playerTurn = playerOne
+
+            correctShoot = False
+
+    while soloMode == True:
+        duoMode = False
+        player = input("Entrez votre pseudo : \n")
+        bot = "Abdel.exe"
+
+
+
+
     otherGame = input("Voulez-vous rejouer ? oui ou non : \n")
-    #si otherGame est égal à oui alors le jeu se relance
     if otherGame == "oui":
         print("C'est reparti !")
+        duoMode = True
+        game = True
         tableGame = [['-','-','-'],['-','-','-'],['-','-','-']]
-        continuer = True
-    #si otherGame est égal à non alors le jeu s'arrête
-    elif otherGame == "non":
+    elif otherGame== "non":
         print("A bientôt !")
-        continuer = False
-    #sinon redemander la question (2 chances)
+        break
     else:
+        print("Erreur, enttrez (oui) ou (non) \n")
         otherGame = input("Voulez-vous rejouer ? oui ou non : \n")
-        if otherGame == "oui":
-            print("C'est reparti !")
-            tableGame = [['-','-','-'],['-','-','-'],['-','-','-']]
-            continuer = True
-        elif otherGame == "non":
-            print("A bientôt !")
-            continuer = False
-        else:
-            otherGame = input("Voulez-vous rejouer ? oui ou non : \n")
-            if otherGame == "oui":
-                print("C'est reparti !")
-                tableGame = [['-','-','-'],['-','-','-'],['-','-','-']]
-                continuer = True
-            elif otherGame == "non":
-                print("A bientôt !")
-                continuer = False
 
 #FIN
