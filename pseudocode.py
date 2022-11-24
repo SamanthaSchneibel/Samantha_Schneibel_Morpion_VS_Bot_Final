@@ -72,7 +72,7 @@
 #créer une variable menu et lui associer le retour de l'exécution de la fonction input pour demander ("Bienvenue dans le célèbre jeu du Morpion ! Affrontez-vous en 1vs1 ou confrontez-vous à notre bot à vos risques et périls :) \nVoulez-vous un rappel des règles ? oui ou non : \n")
 #si menu est égal à oui
     #alors afficher ("Le jeu du Morpion se joue sur un tableau de 3 par 3. Le but du jeu est d'aligner avant son adversaire 3 symboles identiques (les X ou les O) horizontalement, verticalement ou en diagonale.")
-#si menu est égal à non
+#sinon si menu est égal à non
     #alors afficher ()
 #sinon
     #alors afficher ("Error, entrez (oui) ou (non) \n")
@@ -81,7 +81,7 @@
 #créer une variable game et lui associer le retour de l'exécution de la fonction input pour demander ("Voulez-vous jouer ? oui ou non : \n")
 #si game est égal à oui
     #alors game est vrai
-#si game est égal à non
+#sinon si game est égal à non
     #alors game est faux
 #sinon
     #alors afficher ("Erreur, entrez (oui) ou (non) \n")
@@ -91,7 +91,7 @@
     #créer une variable gameMode et lui associer le retour de l'exécution de la fonction input pour demander ("Choissiez un mode de jeu : 1vs1 = 1 / 1vsBot = 2 \n")
     #si gameMode est égal à 1
         #alors créer une variable duoMode égale à vrai
-    #si gameMode est égal à 2
+    #sinon si gameMode est égal à 2
         #alors créer une variable soloMode égale à vrai
     #sinon
         #alors afficher ("Erreur, entrez (1) ou (2) \n")
@@ -157,7 +157,7 @@
         #alors duoMode est vrai
         #alors game est vrai
         #alors tablegame est égal à [['-','-','-'],['-','-','-'],['-','-','-']]
-    #si otherGame est égal à non
+    #sinon si otherGame est égal à non
         #alors afficher ("A bientôt !")
         #alors casser la boucle
     #sinon
